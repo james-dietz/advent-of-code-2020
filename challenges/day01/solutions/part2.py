@@ -1,3 +1,4 @@
+from math import prod
 from typing import List
 
 
@@ -28,3 +29,16 @@ def three_sum(input: List[int], target: int) -> List[List[int]]:
             else:
                 start += 1
     return matches
+
+
+def solve_part2(input_filename):
+    with open(input_filename, "r") as input_file:
+        input = [int(line.rstrip("\n")) for line in input_file]
+        target = 2020
+        # get the first solution found; we only expect one but search for multiple
+        output = three_sum(input, target)[0]
+        return prod(output)
+
+
+if __name__ == '__main__':
+    print(solve_part2("../inputs/input.txt"))
