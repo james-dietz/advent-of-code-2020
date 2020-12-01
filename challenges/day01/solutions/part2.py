@@ -31,7 +31,13 @@ def three_sum(input: List[int], target: int) -> List[List[int]]:
     return matches
 
 
-def solve_part2(input_filename):
+def solve_part2(input_filename: str) -> int:
+    """
+    Solve part 2 of day 1's challenge.
+    Reads the input file, runs 3SUM on the output, then returns the product of the list as the result.
+    :param input_filename: path to the input file
+    :return: the solution to the problem.
+    """
     with open(input_filename, "r") as input_file:
         input = [int(line.rstrip("\n")) for line in input_file]
         target = 2020
