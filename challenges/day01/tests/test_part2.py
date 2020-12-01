@@ -12,7 +12,7 @@ class Test3SUM(unittest.TestCase):
 
     def test_three_sum_success(self):
         target = 45
-        self.assertEqual(three_sum(self.input, target), [5, 17, 23])
+        self.assertTrue([5, 17, 23] in three_sum(self.input, target))
 
     def test_three_sum_failure(self):
         target = 67
