@@ -9,4 +9,16 @@ def subset_sum(input: List[int], target: int) -> List[int]:
 
     :returns: a list of integers which sum to the target, or an empty list if no match is found
     """
-    pass
+    # The day 1 part 1 problem states that two integers in the list will sum to the target.
+    # We first implement an exhaustive search, iterating through the array using two pointers to check each pair.
+    # This algorithm runs in worst-case O(n^2) time.
+    max_index = len(input)
+    for i in range(max_index):
+        j = i + 1
+        while j < max_index:
+            if input[i] + input[j] == target:
+                return [input[i], input[j]]
+            else:
+                j += 1
+    else:
+        return []
