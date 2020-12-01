@@ -1,3 +1,4 @@
+from math import prod
 from typing import List
 
 
@@ -22,3 +23,22 @@ def subset_sum(input: List[int], target: int) -> List[int]:
                 j += 1
     else:
         return []
+
+
+def solve_part1(input_filename: str) -> int:
+    """
+    Solve part 1 of day 1's challenge.
+    Reads the input file, performs the subset sum operation with target 2020,
+    then multiplies the two returned values together to produce the answer.
+    :param input_filename: path to the input file
+    :return: the solution to the problem.
+    """
+    with open(input_filename, "r") as input_file:
+        input = [int(line.rstrip("\n")) for line in input_file]
+        target = 2020
+        output = subset_sum(input, target)
+        return prod(output)
+
+
+if __name__ == '__main__':
+    print(solve_part1("../inputs/input.txt"))
