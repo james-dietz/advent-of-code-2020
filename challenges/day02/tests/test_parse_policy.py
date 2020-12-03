@@ -1,6 +1,7 @@
 import unittest
 
 from challenges.day02.solutions.part1 import parse_policy, is_valid_password
+from challenges.day02.solutions.part2 import is_valid_toboggan_password
 
 
 class TestParsePasswordPolicy(unittest.TestCase):
@@ -17,6 +18,18 @@ class TestParsePasswordPolicy(unittest.TestCase):
     def test_is_valid_password(self):
         for line, policy, password, is_valid in self.inputs:
             self.assertEqual(is_valid_password(policy, password), is_valid)
+
+
+class TestParseTobogganPolicy(unittest.TestCase):
+    inputs = [
+        ("1-3 a: abcde", ("a", 1, 3), "abcde", True),
+        ("1-3 b: cdefg", ("b", 1, 3), "cdefg", False),
+        ("2-9 c: ccccccccc", ("c", 2, 9), "ccccccccc", False)
+    ]
+
+    def test_is_valid_toboggan_password(self):
+        for line, policy, password, is_valid in self.inputs:
+            self.assertEqual(is_valid_toboggan_password(policy, password), is_valid)
 
 
 if __name__ == '__main__':
