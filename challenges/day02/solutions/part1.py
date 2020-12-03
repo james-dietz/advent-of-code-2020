@@ -13,3 +13,13 @@ def parse_policy(line: str) -> Tuple[Policy, str]:
     character = policy[-1]
     min_occurrences, max_occurrences = policy.split(" ")[0].split("-")
     return (character, int(min_occurrences), int(max_occurrences)), password
+
+
+def is_valid_password(policy: Policy, password: str) -> bool:
+    """
+    Tests whether the provided password conforms to the password policy.
+    :param policy: The character required to be present and the range of possible occurrences
+    :param password: The password to test
+    :return: Whether the password is valid or not
+    """
+    pass
