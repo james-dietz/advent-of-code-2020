@@ -22,4 +22,10 @@ def is_valid_password(policy: Policy, password: str) -> bool:
     :param password: The password to test
     :return: Whether the password is valid or not
     """
-    pass
+    required_character, min_occurrences, max_occurences = policy
+    occurences = 0
+    for character in password:
+        if character == required_character:
+            occurences += 1
+
+    return min_occurrences <= occurences <= max_occurences
