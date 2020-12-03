@@ -29,3 +29,15 @@ def is_valid_password(policy: Policy, password: str) -> bool:
             occurences += 1
 
     return min_occurrences <= occurences <= max_occurences
+
+
+def solve_part1(input_filename: str) -> int:
+    with open(input_filename, "r") as input_file:
+        # parse each line's policy and extract the password
+        lines = [parse_policy(line.rstrip("\n")) for line in input_file.readlines()]
+        # count the number of valid passwords
+        return sum([is_valid_password(policy, password) for policy, password in lines])
+
+
+if __name__ == '__main__':
+    print(solve_part1("../inputs/input.txt"))
