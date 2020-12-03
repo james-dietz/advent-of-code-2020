@@ -1,7 +1,9 @@
 from typing import Tuple
 
+Policy = Tuple[str, int, int]
 
-def parse_policy(line: str) -> Tuple[str, int, int]:
+
+def parse_policy(line: str) -> Policy:
     """
     Parse a password policy, returning the required letter, and the minimum and maximum number of times it must occur.
     :param line: the line to parse
