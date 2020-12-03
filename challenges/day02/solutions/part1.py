@@ -7,4 +7,7 @@ def parse_policy(line: str) -> Tuple[str, int, int]:
     :param line: the line to parse
     :return: a tuple containing the password policy
     """
-    pass
+    policy, _ = line.split(sep=": ")
+    character = policy[-1]
+    min_occurrences, max_occurrences = policy.split(" ")[0].split("-")
+    return character, int(min_occurrences), int(max_occurrences)
