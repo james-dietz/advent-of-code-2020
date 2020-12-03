@@ -10,4 +10,7 @@ def is_valid_toboggan_password(policy: Policy, password: str) -> bool:
     :param password: the password to test
     :return: whether the password is valid or not
     """
-    pass
+    character, i1, i2 = policy
+    first = password[i1 - 1] == character
+    second = password[i2 - 1] == character
+    return first != second
