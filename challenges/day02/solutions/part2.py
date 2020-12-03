@@ -1,4 +1,4 @@
-from challenges.day02.solutions.part1 import Policy
+from challenges.day02.solutions.part1 import Policy, parse_policy
 
 
 def is_valid_toboggan_password(policy: Policy, password: str) -> bool:
@@ -14,3 +14,15 @@ def is_valid_toboggan_password(policy: Policy, password: str) -> bool:
     first = password[i1 - 1] == character
     second = password[i2 - 1] == character
     return first != second
+
+
+def solve_part2(input_filename: str) -> int:
+    with open(input_filename, "r") as input_file:
+        # parse each line's policy and extract the password
+        lines = [parse_policy(line.rstrip("\n")) for line in input_file.readlines()]
+        # count the number of valid passwords
+        return sum([is_valid_toboggan_password(policy, password) for policy, password in lines])
+
+
+if __name__ == '__main__':
+    print(solve_part2("../inputs/input.txt"))
