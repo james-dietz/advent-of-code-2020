@@ -57,7 +57,7 @@ class SetMemberRule:
 
 
 class And:
-    def __init__(self, rules: List[Union[RegexRule, RangeRule, LengthRule]]):
+    def __init__(self, rules: List[Union[RegexRule, RangeRule, LengthRule, SetMemberRule]]):
         self.rules = rules
 
     def check(self, input: Any) -> bool:
@@ -70,7 +70,7 @@ class And:
 
 
 class Or:
-    def __init__(self, rules: List[Union[RangeRule, RegexRule, LengthRule]]):
+    def __init__(self, rules: List[Union[RangeRule, RegexRule, LengthRule, SetMemberRule, And]]):
         self.rules = rules
 
     def check(self, input: Any) -> bool:
@@ -80,3 +80,4 @@ class Or:
         :return: true if the input matches any of the rules, otherwise false
         """
         return any([rule.check(input) for rule in self.rules])
+
