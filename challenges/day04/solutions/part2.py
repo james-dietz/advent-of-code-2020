@@ -1,5 +1,5 @@
 import re
-from typing import Set, List, Any, Union
+from typing import Set, List, Any, Union, Dict
 
 
 class LengthRule:
@@ -106,3 +106,12 @@ def is_passport_valid(passport: str) -> bool:
     :return: True if the passport is valid, else false
     """
     pass
+
+
+def extract_passport_fields(passport: str) -> Dict[str, str]:
+    """
+    Extract the fields from a given passport string.
+    :param passport: The passport being processed
+    :return: A dictionary of key-value pairs extracted from the passport
+    """
+    return {k: v for k, v in [item.split(":") for item in passport.split(" ")]}
