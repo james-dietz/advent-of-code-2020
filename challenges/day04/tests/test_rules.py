@@ -1,6 +1,7 @@
 import unittest
 
-from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule, And, Or, is_passport_valid
+from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule, And, Or, \
+    is_passport_valid, extract_passport_fields
 
 
 class TestLengthRule(unittest.TestCase):
@@ -87,6 +88,11 @@ class TestPassportVerification(unittest.TestCase):
     def test_passport_verification(self):
         for passport, is_valid in self.inputs:
             self.assertEqual(is_passport_valid(passport), is_valid)
+
+    def test_field_extraction(self):
+        input = "pid:087499704 hgt:74in ecl:grn"
+        expected = {"pid": "087499704", "hgt": "74in", "ecl":"grn"}
+        self.assertEqual(extract_passport_fields(input), expected)
 
 
 if __name__ == '__main__':
