@@ -8,4 +8,4 @@ class LengthRule:
         :param input_str: The string to test
         :return: whether the string meets the criteria
         """
-        pass
+        return len(input_str) == self.exact_length
