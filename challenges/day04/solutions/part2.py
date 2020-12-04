@@ -106,7 +106,18 @@ def is_passport_valid(passport: str) -> bool:
     :param passport: The passport to test
     :return: True if the passport is valid, else false
     """
-    pass
+    required_fields = set(PASSPORT_RULES.keys())
+    fields = extract_passport_fields(passport)
+    if not required_fields.issubset(fields):
+        return False
+
+    for field, value in fields.items():
+        if field in PASSPORT_RULES.keys():
+            test = PASSPORT_RULES[field]
+            if not test.check(value):
+                return False
+
+    return True
 
 
 def extract_passport_fields(passport: str) -> Dict[str, str]:
