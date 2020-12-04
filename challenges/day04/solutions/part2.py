@@ -66,4 +66,4 @@ class And:
         :param input: the input under test
         :return: true if all rule checks return true, else false
         """
-        pass
+        return all([rule.check(input) for rule in self.rules])
