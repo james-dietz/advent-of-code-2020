@@ -39,4 +39,4 @@ class RegexRule:
         :param input_str: the string to test
         :return: whether the pattern matches the provided string
         """
-        pass
+        return re.match(self.pattern, input_str) is not None
