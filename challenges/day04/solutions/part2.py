@@ -1,3 +1,6 @@
+import re
+
+
 class LengthRule:
     def __init__(self, exact=4):
         self.exact_length = exact
@@ -24,3 +27,16 @@ class RangeRule:
         :return: whether the integer is within the range
         """
         return self.min <= input_int <= self.max
+
+
+class RegexRule:
+    def __init__(self, pattern: str):
+        self.pattern = re.compile(pattern)
+
+    def check(self, input_str: str) -> bool:
+        """
+        Test the provided string against the set regex expression.
+        :param input_str: the string to test
+        :return: whether the pattern matches the provided string
+        """
+        pass
