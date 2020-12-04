@@ -1,4 +1,5 @@
 import re
+import string
 from typing import Set, List, Any, Union, Dict
 
 
@@ -28,6 +29,9 @@ class RangeRule:
         :return: whether the integer is within the range
         """
         if isinstance(input, str):
+            input = input.translate(
+                str.maketrans("", "", string.ascii_letters)
+            )
             return input.isnumeric() and (self.min <= int(input) <= self.max)
         return self.min <= input <= self.max
 
