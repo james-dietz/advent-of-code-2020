@@ -1,5 +1,8 @@
 from typing import Set
 
+REQUIRED_FIELDS = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
+OPTIONAL_FIELDS = {"cid"}
+
 
 def extract_passport_fields(passport: str) -> Set[str]:
     """
@@ -18,4 +21,4 @@ def is_passport_valid(fields: Set[str]) -> bool:
     :param fields: a set containing the fields found in the passport
     :return: whether the passport meets the above criteria
     """
-    pass
+    return REQUIRED_FIELDS.issubset(fields)

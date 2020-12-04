@@ -3,9 +3,6 @@ from typing import Tuple, Set, List
 
 from challenges.day04.solutions.part1 import extract_passport_fields, is_passport_valid
 
-REQUIRED_FIELDS = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
-OPTIONAL_FIELDS = {"cid"}
-
 InputFormat = Tuple[str, Set[str], bool]
 
 
