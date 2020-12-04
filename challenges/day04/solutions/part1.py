@@ -30,4 +30,4 @@ def sanitise_chunk(input: List[str]) -> str:
     :param input: a series of lines
     :return: the lines, combined and space-separated
     """
-    pass
+    return " ".join(input)
