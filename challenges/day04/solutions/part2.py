@@ -19,7 +19,8 @@ class RangeRule:
     def check(self, input_int: int) -> bool:
         """
         Test the provided integer and return whether it sits within the declared range.
+        The specified range is inclusive at both ends.
         :param input_int: the integer to test
         :return: whether the integer is within the range
         """
-        pass
+        return self.min <= input_int <= self.max
