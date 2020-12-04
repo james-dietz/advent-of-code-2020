@@ -1,4 +1,5 @@
 import re
+from typing import Set
 
 
 class LengthRule:
@@ -40,3 +41,16 @@ class RegexRule:
         :return: whether the pattern matches the provided string
         """
         return re.match(self.pattern, input_str) is not None
+
+
+class SetMemberRule:
+    def __init__(self, set: Set[str]):
+        self.set = set
+
+    def check(self, input_str: str) -> bool:
+        """
+        Check whether the provided input string is a member of the set
+        :param input_str: the string to test
+        :return: whether the string is a member of the set
+        """
+        pass

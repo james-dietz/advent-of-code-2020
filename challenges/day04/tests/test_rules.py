@@ -1,6 +1,6 @@
 import unittest
 
-from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule
+from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule
 
 
 class TestLengthRule(unittest.TestCase):
@@ -29,6 +29,15 @@ class TestRegexRule(unittest.TestCase):
         self.assertTrue(self.regex_rule.check("160cm"))
         self.assertTrue(self.regex_rule.check("40in"))
         self.assertFalse(self.regex_rule.check("jiffy"))
+
+
+class TestSetMemberRule(unittest.TestCase):
+    def setUp(self) -> None:
+        self.set_rule = SetMemberRule(set={"byr", "eyr", "iyr"})
+
+    def test_set_member_match(self):
+        self.assertTrue(self.set_rule.check("byr"))
+        self.assertFalse(self.set_rule.check("$$$"))
 
 
 if __name__ == '__main__':
