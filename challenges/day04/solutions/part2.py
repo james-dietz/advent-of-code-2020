@@ -20,14 +20,16 @@ class RangeRule:
         self.min = min
         self.max = max
 
-    def check(self, input_int: int) -> bool:
+    def check(self, input: Union[str, int]) -> bool:
         """
         Test the provided integer and return whether it sits within the declared range.
         The specified range is inclusive at both ends.
-        :param input_int: the integer to test
+        :param input: the integer to test
         :return: whether the integer is within the range
         """
-        return self.min <= input_int <= self.max
+        if isinstance(input, str):
+            return input.isnumeric() and (self.min <= int(input) <= self.max)
+        return self.min <= input <= self.max
 
 
 class RegexRule:
