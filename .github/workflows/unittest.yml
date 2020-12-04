@@ -30,4 +30,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Discover and run all tests
-        run: python3 -m unittest discover $GITHUB_WORKSPACE
+        run: python3 -m unittest discover $GITHUB_WORKSPACE -v
