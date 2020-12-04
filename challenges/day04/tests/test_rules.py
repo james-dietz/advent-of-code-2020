@@ -1,6 +1,6 @@
 import unittest
 
-from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule, And
+from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule, And, Or
 
 
 class TestLengthRule(unittest.TestCase):
@@ -53,6 +53,23 @@ class TestAndRule(unittest.TestCase):
         self.assertFalse(self.and_rule.check("54321"))
         # regex rule fails
         self.assertFalse(self.and_rule.check("abcd"))
+
+
+class TestOrRule(unittest.TestCase):
+    def setUp(self):
+        self.regex_rule = RegexRule(r"[0-9a-f]{2,}")
+        self.length_rule = LengthRule(exact=4)
+        self.or_rule = Or(rules=[self.regex_rule, self.length_rule])
+
+    def test_or_match(self):
+        # matches neither rule
+        self.assertFalse(self.or_rule.check("clips"))
+        # matches regex
+        self.assertTrue(self.or_rule.check("789abcdef"))
+        # matches length
+        self.assertTrue(self.or_rule.check("1234"))
+        # matches both
+        self.assertTrue(self.or_rule.check("beef"))
 
 
 if __name__ == '__main__':

@@ -67,3 +67,16 @@ class And:
         :return: true if all rule checks return true, else false
         """
         return all([rule.check(input) for rule in self.rules])
+
+
+class Or:
+    def __init__(self, rules: List[Union[RangeRule, RegexRule, LengthRule]]):
+        self.rules = rules
+
+    def check(self, input: Any) -> bool:
+        """
+        Checks whether the input matches any of the provided rules.
+        :param input: the input under test
+        :return: true if the input matches any of the rules, otherwise false
+        """
+        pass
