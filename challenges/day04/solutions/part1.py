@@ -7,7 +7,7 @@ def extract_passport_fields(passport: str) -> Set[str]:
     :param passport: The passport being processed
     :return: A set containing all of the extracted fields.
     """
-    pass
+    return set(item.split(":")[0] for item in passport.split(" "))
 
 
 def is_passport_valid(fields: Set[str]) -> bool:
