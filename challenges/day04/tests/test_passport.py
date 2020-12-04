@@ -1,7 +1,7 @@
 import unittest
 from typing import Tuple, Set, List
 
-from challenges.day04.solutions.part1 import extract_passport_fields, is_passport_valid
+from challenges.day04.solutions.part1 import extract_passport_fields, is_passport_valid, sanitise_chunk
 
 InputFormat = Tuple[str, Set[str], bool]
 
@@ -41,6 +41,15 @@ class TestPassportParser(unittest.TestCase):
     def test_is_passport_valid(self):
         for _, fields, is_valid in self.inputs:
             self.assertEqual(is_passport_valid(fields), is_valid)
+
+
+class TestInputSanitiser(unittest.TestCase):
+    def test_input_sanitiser(self):
+        input_lines = ["eyr:2028 iyr:2016 byr:1995 ecl:oth", "pid:543685203 hcl:#c0946f", "hgt:152cm", "cid:252"]
+        self.assertEqual(
+            sanitise_chunk(input_lines),
+            "eyr:2028 iyr:2016 byr:1995 ecl:oth pid:543685203 hcl:#c0946f hgt:152cm cid:252"
+        )
 
 
 if __name__ == '__main__':

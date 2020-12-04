@@ -1,4 +1,4 @@
-from typing import Set
+from typing import Set, List
 
 REQUIRED_FIELDS = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
 OPTIONAL_FIELDS = {"cid"}
@@ -22,3 +22,12 @@ def is_passport_valid(fields: Set[str]) -> bool:
     :return: whether the passport meets the above criteria
     """
     return REQUIRED_FIELDS.issubset(fields)
+
+
+def sanitise_chunk(input: List[str]) -> str:
+    """
+    Merge separate passport lines into one single line.
+    :param input: a series of lines
+    :return: the lines, combined and space-separated
+    """
+    pass
