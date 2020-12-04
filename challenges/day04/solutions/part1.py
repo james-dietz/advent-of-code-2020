@@ -48,3 +48,24 @@ def separate_passports(input_lines: List[str]) -> List[List[str]]:
         else:
             current_passport_lines.append(line)
     return passports
+
+
+def solve_part1(input_filename: str) -> int:
+    valid_passports = 0
+    with open(input_filename, "r") as input_file:
+        # read the file
+        lines = [line.strip("\n") for line in input_file.readlines()]
+        # split the file into passports
+        passport_lines = separate_passports(lines)
+        for passport_line_list in passport_lines:
+            # combine lines into one passport
+            passport = sanitise_chunk(passport_line_list)
+            # get the passport fields
+            fields = extract_passport_fields(passport)
+            # count passport if valid
+            valid_passports += is_passport_valid(fields)
+    return valid_passports
+
+
+if __name__ == '__main__':
+    print(solve_part1("../inputs/input.txt"))
