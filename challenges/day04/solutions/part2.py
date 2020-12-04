@@ -97,3 +97,12 @@ PASSPORT_RULES = {
     "hcl": SetMemberRule({"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}),
     "pid": RegexRule(r"[0-9]{9}")
 }
+
+
+def is_passport_valid(passport: str) -> bool:
+    """
+    Tests whether the passport is valid according to the predefined rules.
+    :param passport: The passport to test
+    :return: True if the passport is valid, else false
+    """
+    pass
