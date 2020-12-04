@@ -94,7 +94,8 @@ PASSPORT_RULES = {
         And([RegexRule(r"\d+cm"), RangeRule(min=150, max=193)]),
         And([RegexRule(r"\d+in"), RangeRule(min=59, max=76)])
     ]),
-    "hcl": SetMemberRule({"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}),
+    "hcl": RegexRule(r"#[0-9a-f]{6}"),
+    "ecl": SetMemberRule({"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}),
     "pid": RegexRule(r"[0-9]{9}")
 }
 
