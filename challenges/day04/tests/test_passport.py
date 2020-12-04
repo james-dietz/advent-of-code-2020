@@ -1,7 +1,8 @@
 import unittest
 from typing import Tuple, Set, List
 
-from challenges.day04.solutions.part1 import extract_passport_fields, is_passport_valid, sanitise_chunk
+from challenges.day04.solutions.part1 import extract_passport_fields, is_passport_valid, sanitise_chunk, \
+    separate_passports
 
 InputFormat = Tuple[str, Set[str], bool]
 
@@ -50,6 +51,15 @@ class TestInputSanitiser(unittest.TestCase):
             sanitise_chunk(input_lines),
             "eyr:2028 iyr:2016 byr:1995 ecl:oth pid:543685203 hcl:#c0946f hgt:152cm cid:252"
         )
+
+    def test_passport_separator(self):
+        input_lines = ['hgt:171cm', 'iyr:2013 pid:214368857 hcl:#cfa07d byr:1986 eyr:2028 ecl:grn', '',
+                       'hgt:167cm cid:210 ecl:brn pid:429131951 hcl:#cfa07d eyr:2029 iyr:2010', 'byr:1945', '']
+        expected_output = [
+            ['hgt:171cm', 'iyr:2013 pid:214368857 hcl:#cfa07d byr:1986 eyr:2028 ecl:grn'],
+            ['hgt:167cm cid:210 ecl:brn pid:429131951 hcl:#cfa07d eyr:2029 iyr:2010', 'byr:1945']
+        ]
+        self.assertEqual(separate_passports(input_lines), expected_output)
 
 
 if __name__ == '__main__':

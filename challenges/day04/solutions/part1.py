@@ -31,3 +31,12 @@ def sanitise_chunk(input: List[str]) -> str:
     :return: the lines, combined and space-separated
     """
     return " ".join(input)
+
+
+def separate_passports(input_lines: List[str]) -> List[List[str]]:
+    """
+    Split up passports from the input file. Blank lines delimit each passport.
+    :param input_lines: A list of lines from the input file
+    :return: A list of lists of passport lines to be combined and processed.
+    """
+    pass
