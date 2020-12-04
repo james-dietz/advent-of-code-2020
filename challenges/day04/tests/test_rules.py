@@ -21,6 +21,9 @@ class TestRangeRule(unittest.TestCase):
         self.assertTrue(self.range_rule.check(5))
         self.assertFalse(self.range_rule.check(13))
 
+    def test_range_string_strip_match(self):
+        self.assertTrue(self.range_rule.check("7am"))
+
 
 class TestRegexRule(unittest.TestCase):
     def setUp(self) -> None:
