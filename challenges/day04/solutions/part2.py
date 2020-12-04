@@ -83,3 +83,17 @@ class Or:
         """
         return any([rule.check(input) for rule in self.rules])
 
+
+FOUR_DIGIT_RULE = RegexRule(r"[0-9]{4}")
+
+PASSPORT_RULES = {
+    "byr": And([FOUR_DIGIT_RULE, RangeRule(min=1920, max=2002)]),
+    "iyr": And([FOUR_DIGIT_RULE, RangeRule(min=2010, max=2020)]),
+    "eyr": And([FOUR_DIGIT_RULE, RangeRule(min=2020, max=2030)]),
+    "hgt": Or([
+        And([RegexRule(r"\d+cm"), RangeRule(min=150, max=193)]),
+        And([RegexRule(r"\d+in"), RangeRule(min=59, max=76)])
+    ]),
+    "hcl": SetMemberRule({"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}),
+    "pid": RegexRule(r"[0-9]{9}")
+}
