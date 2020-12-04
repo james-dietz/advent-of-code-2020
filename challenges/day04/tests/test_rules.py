@@ -1,6 +1,6 @@
 import unittest
 
-from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule
+from challenges.day04.solutions.part2 import LengthRule, RangeRule, RegexRule, SetMemberRule, And
 
 
 class TestLengthRule(unittest.TestCase):
@@ -38,6 +38,21 @@ class TestSetMemberRule(unittest.TestCase):
     def test_set_member_match(self):
         self.assertTrue(self.set_rule.check("byr"))
         self.assertFalse(self.set_rule.check("$$$"))
+
+
+class TestAndRule(unittest.TestCase):
+    def setUp(self) -> None:
+        self.regex_rule = RegexRule(r"\d{4}")
+        self.length_rule = LengthRule(exact=4)
+        self.and_rule = And(rules=[self.regex_rule, self.length_rule])
+
+    def test_and_match(self):
+        # both rules pass
+        self.assertTrue(self.and_rule.check("4321"))
+        # length rule fails
+        self.assertFalse(self.and_rule.check("54321"))
+        # regex rule fails
+        self.assertFalse(self.and_rule.check("abcd"))
 
 
 if __name__ == '__main__':

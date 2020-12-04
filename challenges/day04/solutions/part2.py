@@ -1,5 +1,5 @@
 import re
-from typing import Set
+from typing import Set, List, Any, Union
 
 
 class LengthRule:
@@ -54,3 +54,16 @@ class SetMemberRule:
         :return: whether the string is a member of the set
         """
         return input_str in self.set
+
+
+class And:
+    def __init__(self, rules: List[Union[RegexRule, RangeRule, LengthRule]]):
+        self.rules = rules
+
+    def check(self, input: Any) -> bool:
+        """
+        Test the input against all of the rules provided.
+        :param input: the input under test
+        :return: true if all rule checks return true, else false
+        """
+        pass
