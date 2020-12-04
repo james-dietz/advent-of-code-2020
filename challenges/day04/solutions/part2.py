@@ -53,4 +53,4 @@ class SetMemberRule:
         :param input_str: the string to test
         :return: whether the string is a member of the set
         """
-        pass
+        return input_str in self.set
