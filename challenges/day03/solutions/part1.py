@@ -2,6 +2,7 @@ from typing import Tuple
 
 TREE = "#"
 BLANK = "."
+KNIGHT_MOVEMENT = (3, 1)  # three cells right, one cell down
 
 
 def trees_encountered(input: str, move: Tuple[int, int]) -> int:
@@ -25,3 +26,13 @@ def trees_encountered(input: str, move: Tuple[int, int]) -> int:
         # count a tree if there is one in the cell (True == 1; False == 0)
         trees += forest[y][x] == TREE
     return trees
+
+
+def solve_part1(input_filename: str) -> int:
+    with open(input_filename, "r") as input_file:
+        forest = input_file.read()
+        return trees_encountered(forest, KNIGHT_MOVEMENT)
+
+
+if __name__ == '__main__':
+    print(solve_part1("../inputs/input.txt"))
