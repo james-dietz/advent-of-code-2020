@@ -79,4 +79,4 @@ class Or:
         :param input: the input under test
         :return: true if the input matches any of the rules, otherwise false
         """
-        pass
+        return any([rule.check(input) for rule in self.rules])
