@@ -25,4 +25,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: python -m unittest discover $GITHUB_WORKSPACE
+        run: python3 -m unittest discover $GITHUB_WORKSPACE
