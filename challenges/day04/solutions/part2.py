@@ -100,7 +100,7 @@ PASSPORT_RULES = {
     ]),
     "hcl": RegexRule(r"#[0-9a-f]{6}"),
     "ecl": SetMemberRule({"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}),
-    "pid": RegexRule(r"[0-9]{9}")
+    "pid": RegexRule(r"[0-9]{9}$")
 }
 
 
