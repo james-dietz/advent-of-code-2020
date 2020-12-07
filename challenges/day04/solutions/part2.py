@@ -2,6 +2,8 @@ import re
 import string
 from typing import Set, List, Any, Union, Dict
 
+from challenges.day04.solutions.part1 import separate_passports, sanitise_chunk
+
 
 class LengthRule:
     def __init__(self, exact=4):
@@ -131,3 +133,25 @@ def extract_passport_fields(passport: str) -> Dict[str, str]:
     :return: A dictionary of key-value pairs extracted from the passport
     """
     return {k: v for k, v in [item.split(":") for item in passport.split(" ")]}
+
+
+def solve_part2(input_filename: str) -> int:
+    valid_passports = 0
+    with open(input_filename, "r") as input_file:
+        # read the file
+        lines = [line.strip("\n") for line in input_file.readlines()]
+        # split the file into passports
+        passport_lines = separate_passports(lines)
+        for passport_line_list in passport_lines:
+            # combine lines into one passport
+            passport = sanitise_chunk(passport_line_list)
+            # count passport if valid
+            valid = is_passport_valid(passport)
+            if valid:
+                print(f"{passport:>80} | {valid}")
+            valid_passports += valid
+    return valid_passports
+
+
+if __name__ == '__main__':
+    print(solve_part2("../inputs/input.txt"))
