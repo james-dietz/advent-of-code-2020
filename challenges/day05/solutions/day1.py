@@ -50,3 +50,17 @@ def seat_id(seat: Seat) -> int:
     """
     row, column = seat
     return row * 8 + column
+
+
+def solve_day1(input_filename: str) -> int:
+    with open(input_filename, "r") as input_file:
+        # get the list of seat specifiers
+        seat_specifiers = [line.rstrip("\n") for line in input_file.readlines()]
+        # resolve specifiers to seats (row, column)
+        seats = map(lambda seat_specifier: bsp(seat_specifier, 128, 8), seat_specifiers)
+        # get the maximum filled seat ID
+        return max(map(lambda seat: seat_id(seat), seats))
+
+
+if __name__ == '__main__':
+    print(solve_day1("../inputs/input.txt"))
