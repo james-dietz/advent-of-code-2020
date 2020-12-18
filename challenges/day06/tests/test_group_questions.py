@@ -9,11 +9,11 @@ TestCase = Tuple[Tuple[str], Set[str], Set[str]]
 
 class TestGroupQuestions(unittest.TestCase):
     inputs: List[TestCase] = [
-        (("abc"), {"a", "b", "c"}, {"a", "b", "c"}),
-        (("a", "b", "c"), {"a", "b", "c"}, {}),
+        (("abc",), {"a", "b", "c"}, {"a", "b", "c"}),
+        (("a", "b", "c"), {"a", "b", "c"}, set()),
         (("ab", "ac"), {"a", "b", "c"}, {"a"}),
         (("a", "a", "a", "a"), {"a"}, {"a"}),
-        (("b"), {"b"}, {"b"})
+        (("b",), {"b"}, {"b"})
     ]
 
     def test_group_questions_answered(self):
