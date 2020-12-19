@@ -1,5 +1,7 @@
 from typing import Tuple, Set
 
+from challenges.day06.solutions.part1 import split_into_groups
+
 
 def group_questions_all_answered(person_answered: Tuple[str]) -> Set[str]:
     """
@@ -16,3 +18,16 @@ def group_questions_all_answered(person_answered: Tuple[str]) -> Set[str]:
             questions_answered.intersection_update(question_set)
 
     return questions_answered
+
+
+def solve_part2(input_filename: str) -> int:
+    with open(input_filename, "r") as input_file:
+        groups = split_into_groups([line.rstrip("\n") for line in input_file.readlines()])
+        total = 0
+        for group in groups:
+            total += len(group_questions_all_answered(group))
+        return total
+
+
+if __name__ == '__main__':
+    print(solve_part2("../inputs/input.txt"))
